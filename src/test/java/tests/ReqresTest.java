@@ -125,7 +125,7 @@ public class ReqresTest {
     }
 
     @Test
-    public void postRegisterSuccessful() {
+    public void postRegisterSuccessfulTest() {
         Register register = Register.builder()
                 .email("eve.holt@reqres.in")
                 .password("pistol")
@@ -142,7 +142,7 @@ public class ReqresTest {
     }
 
     @Test
-    public void postRegisterUnSuccessful() {
+    public void postRegisterUnSuccessfulTest() {
         Register register = Register.builder().email("eve.holt@reqres.in").build();
         Response response = given()
                 .body(register)
@@ -154,7 +154,7 @@ public class ReqresTest {
     }
 
     @Test
-    public void postLoginSuccessful() {
+    public void postLoginSuccessfulTest() {
         Login login = Login.builder()
                 .email("eve.holt@reqres.in")
                 .password("cityslicka")
@@ -171,7 +171,7 @@ public class ReqresTest {
     }
 
     @Test
-    public void postLoginUnSuccessful() {
+    public void postLoginUnSuccessfulTest() {
         Login login = Login.builder()
                 .email("sydney@fife")
                 .build();
@@ -186,7 +186,7 @@ public class ReqresTest {
     }
 
     @Test
-    public void getDelayedResponse(){
+    public void getDelayedResponseTest(){
         String body = given()
                 .when()
                 .get("https://reqres.in/api/users?page=2")
