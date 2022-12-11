@@ -1,10 +1,12 @@
 package objects;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class Resource {
+@Builder
+public class ResourceData {
     private int id;
     private String name;
     private int year;
