@@ -1,5 +1,7 @@
 package tests;
 
+import adapters.LoginAdapter;
+import adapters.RegisterAdapter;
 import adapters.ResourceAdapter;
 import adapters.UserAdapter;
 import com.google.gson.Gson;
@@ -110,18 +112,15 @@ public class ReqresTest {
 
     @Test
     public void postRegisterSuccessfulTest() {
-        Register register = Register.builder()
-                .email("eve.holt@reqres.in")
-                .password("pistol")
-                .build();
-        Response response = new UserAdapter().registerUser(register);
-        Assert.assertEquals(response.statusCode(), HTTP_OK);
+        User user = User.builder().email("eve.holt@reqres.in").password("pistol").build();
+        Response response = new RegisterAdapter().postRegisterUser(user);
+        Assert.assertEquals(response.statusCode(),HTTP_OK);
     }
 
     @Test
     public void postRegisterUnSuccessfulTest() {
-        Register register = Register.builder().email("eve.holt@reqres.in").build();
-        Response response = new UserAdapter().registerUser(register);
+        User user = User.builder().email("sydney@fife").build();
+        Response response = new RegisterAdapter().postRegisterUser(user);
         Assert.assertEquals(response.statusCode(), HTTP_BAD_REQUEST);
     }
 
@@ -131,7 +130,7 @@ public class ReqresTest {
                 .email("eve.holt@reqres.in")
                 .password("cityslicka")
                 .build();
-        Response response = new UserAdapter().loginUser(user);
+        Response response = new LoginAdapter().postLoginUser(user);
         Assert.assertEquals(response.statusCode(), HTTP_OK);
     }
 
@@ -140,7 +139,7 @@ public class ReqresTest {
         User user = User.builder()
                 .email("sydney@fife")
                 .build();
-        Response response = new UserAdapter().loginUser(user);
+        Response response = new LoginAdapter().postLoginUser(user);
         Assert.assertEquals(response.statusCode(), HTTP_BAD_REQUEST);
     }
 

@@ -1,7 +1,6 @@
 package adapters;
 
 import io.restassured.response.Response;
-import objects.Register;
 import objects.User;
 import static utils.StringConstant.*;
 
@@ -29,14 +28,6 @@ public class UserAdapter extends BaseAdapter {
 
     public Response deleteUser(String userId) {
         return delete(String.format(SINGLE_USER_API_ENDPOINT, userId));
-    }
-
-    public Response registerUser(Register register) {
-        return post(REGISTER_API_ENDPOINT, convector.toJson(register));
-    }
-
-    public Response loginUser(User user) {
-        return post(LOGIN_API_ENDPOINT, convector.toJson(user));
     }
 
     public Response getUserDelayedResponse (String page) {
